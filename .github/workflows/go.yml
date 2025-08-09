@@ -34,7 +34,7 @@ jobs:
         chmod +x /usr/local/bin/docker-compose
     
     - name: Test docker-compose
-      run: docker-compose --version
+      run: /usr/local/bin/docker-compose --version
 
     - name: Build-DB
       run: docker-compose -f docker-compose.yml build
