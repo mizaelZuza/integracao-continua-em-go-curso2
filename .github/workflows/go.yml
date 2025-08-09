@@ -2,9 +2,9 @@ name: Go
 
 on:
   push:
-    branches: [ Aula_1 ]
+    branches: [ "**" ]
   pull_request:
-    branches: [ Aula_1 ]
+    branches: [ "**" ]
 
 jobs:
 
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go_version: ['1.18', '1.17', '>=1.18']
+        go_version: ['1.18', '1.17', '1.21', '1.22']
     steps:
     - uses: actions/checkout@v3
 
