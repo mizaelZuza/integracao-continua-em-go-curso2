@@ -18,30 +18,25 @@ jobs:
       DB_NAME: root
     strategy:
       matrix:
-        go_version: ['1.21', 1.22']
+        go_version: ['1.21', '1.22']
     steps:
     - uses: actions/checkout@v3
-
+    
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
         go-version: ${{ matrix.go_version }}
-
-    - name: Instalar o docker compose
-      run: sudo apt-get update && apt-get install -y docker-compose
-    
-    - name: Verificar instalação do docker compose
-      run: docker-compose --version
-
+      
     - name: Build-DB
-      run: docker-compose build
-
+      run: docker-compose -f docker-compose.yml build
+      
     - name: Create-DB
       run: docker compose up -d
 
     - name: Test
       run: go test -v main_test.go 
-
+      
+  
   build:
     needs: test
     runs-on: ${{ matrix.os }}
