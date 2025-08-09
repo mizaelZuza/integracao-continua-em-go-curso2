@@ -31,7 +31,7 @@ jobs:
       run: docker-compose -f docker-compose.yml build
       
     - name: Create-DB
-      run: docker-compose up -d
+      run: docker compose up -d
 
     - name: Test
       run: go test -v main_test.go 
