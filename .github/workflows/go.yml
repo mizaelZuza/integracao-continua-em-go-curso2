@@ -27,14 +27,13 @@ jobs:
       with:
         go-version: ${{ matrix.go_version }}
       
-    - name: Install docker-ompose
-      run: |
-        export PATH=$PATH:/usr/local/bin
-        curl -SL "https://github.com/docker/compose/releases/download/v2.25.0/docker-compose-linux" -o /usr/local/bin/docker-compose
-        chmod +x /usr/local/bin/docker-compose
+    - name: Install Docker Compose
+      uses: docker/compose/install-action@v1
+      with:
+        version: 'latest'
     
     - name: Test docker-compose
-      run: /usr/local/bin/docker-compose --version
+      run: docker-compose --version
 
     - name: Build-DB
       run: docker-compose -f docker-compose.yml build
