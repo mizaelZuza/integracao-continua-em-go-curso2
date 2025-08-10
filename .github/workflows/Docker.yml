@@ -19,8 +19,8 @@ jobs:
       uses: docker/login-action@v3.5.0
       with:
         # Username used to log against the Docker registry
-        username: mizael-zuza
+        username: mizaelzuza
         # Password or personal access token used to log against the Docker registry
-        password: # optional
+        password: ${{secrets.PASSWORD_DOCKER_HUB}}
 
             
